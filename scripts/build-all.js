@@ -2,7 +2,7 @@
 
 import { execSync } from 'child_process';
 import { readdirSync, existsSync, writeFileSync, mkdirSync } from 'fs';
-import { basename, join } from 'path';
+import { basename, join, resolve } from 'path';
 
 const mdFilesDir = 'contents';
 const projectName = process.argv[2]; // 获取命令行参数
@@ -14,11 +14,6 @@ const mdFiles = readdirSync(mdFilesDir)
 
 // 创建 dist/index.html
 function createIndexHtml(projects) {
-  // 确保 dist 目录存在
-  if (!existsSync('dist')) {
-    mkdirSync('dist', { recursive: true });
-  }
-
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,6 +64,11 @@ ${projects.map(name => `    <li><a href="/${name}/">${name}</a></li>`).join('\n'
 </body>
 </html>`;
 
+  // 确保 dist 目录存在
+  if (!existsSync('dist')) {
+    mkdirSync('dist', { recursive: true });
+  }
+
   writeFileSync('dist/index.html', html);
   console.log('\n✓ Created dist/index.html');
 }
@@ -86,8 +86,9 @@ if (projectName) {
   }
 
   console.log(`Building ${targetFile}...\n`);
+  const outputDir = resolve(process.cwd(), 'dist', projectName);
   try {
-    execSync(`slidev build ${mdFilesDir}/${targetFile} --out dist/${projectName}`, {
+    execSync(`slidev build ${mdFilesDir}/${targetFile} --out "${outputDir}"`, {
       stdio: 'inherit'
     });
     console.log(`\n✓ Successfully built ${targetFile} to dist/${projectName}`);
@@ -113,9 +114,10 @@ if (projectName) {
 
   mdFiles.forEach((file, index) => {
     const fileName = basename(file, '.md');
+    const outputDir = resolve(process.cwd(), 'dist', fileName);
     console.log(`\n[${index + 1}/${mdFiles.length}] Building ${file}...`);
     try {
-      execSync(`slidev build ${mdFilesDir}/${file} --out dist/${fileName}`, {
+      execSync(`slidev build ${mdFilesDir}/${file} --out "${outputDir}"`, {
         stdio: 'inherit'
       });
       console.log(`✓ Successfully built ${file} to dist/${fileName}`);
