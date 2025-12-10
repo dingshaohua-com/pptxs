@@ -1,7 +1,12 @@
 node_modules
 .DS_Store
 dist
+contents/dist
+contents/index.html
 *.local
 .vite-inspect
 .remote-assets
 components.d.ts
+
+# Slidev 构建产物
+contents/index.html

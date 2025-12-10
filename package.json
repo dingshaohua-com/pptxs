@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --port 3080 --open",
-    "export": "slidev export"
+    "dev": "node scripts/dev.js lxx",
+    "build": "node scripts/build-all.js lxx",
+    "export": "node scripts/export-all.js"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.0",
