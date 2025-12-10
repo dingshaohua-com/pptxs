@@ -86,13 +86,17 @@ if (projectName) {
       stdio: 'inherit'
     });
     console.log(`\n✓ Successfully built ${targetFile} to dist/${projectName}`);
-
-    // 创建 index.html（包含所有项目，不只是当前构建的）
-    const allProjects = mdFiles.map(f => basename(f, '.md'));
-    createIndexHtml(allProjects);
   } catch (error) {
     console.error(`✗ Failed to build ${targetFile}`);
     process.exit(1);
+  }
+
+  // 创建 index.html（包含所有项目，不只是当前构建的）
+  try {
+    const allProjects = mdFiles.map(f => basename(f, '.md'));
+    createIndexHtml(allProjects);
+  } catch (error) {
+    console.error(`Warning: Failed to create index.html:`, error.message);
   }
 } else {
   // 没有参数，构建所有演示文稿
