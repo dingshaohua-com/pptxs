@@ -1,5 +1,9 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/lxx/:path*", "destination": "/lxx/index.html" },
+    { "source": "/slides/:path*", "destination": "/slides/index.html" }
+  ]
 }
 
