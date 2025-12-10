@@ -42,6 +42,7 @@ lang: zh-CN
 
 ---
 layout: default
+transition: fade-out
 ---
 
 # 目录
@@ -112,6 +113,7 @@ layout: default
 
 ---
 layout: two-cols
+transition: slide-up
 ---
 
 # 一、入职概况
@@ -156,6 +158,7 @@ layout: two-cols
 
 ---
 layout: default
+transition: slide-left
 ---
 
 # 二、核心业务模块：答题卡系统
@@ -192,6 +195,7 @@ layout: default
 
 ---
 layout: default
+transition: fade
 ---
 
 # 答题卡的两种评分模式
@@ -246,6 +250,7 @@ layout: default
 
 ---
 layout: default
+transition: slide-up
 ---
 
 # 计分模式特殊规则
@@ -293,6 +298,7 @@ layout: default
 
 ---
 layout: default
+transition: slide-left
 ---
 
 # 三、完整业务流程
@@ -568,6 +574,7 @@ layout: default
 
 ---
 layout: default
+transition: view-transition
 ---
 
 # 四、参与测试的需求版本
@@ -626,6 +633,7 @@ layout: default
 
 ---
 layout: default
+transition: fade
 ---
 
 # 五、测试用例设计思路（1/2）
@@ -718,6 +726,7 @@ layout: default
 
 ---
 layout: default
+transition: slide-up
 ---
 
 # 六、测试执行统计
@@ -767,6 +776,7 @@ pie title 缺陷严重程度分布
 
 ---
 layout: default
+transition: slide-left
 ---
 
 # 七、典型问题案例（1/3）
@@ -937,6 +947,7 @@ layout: default
 
 ---
 layout: default
+transition: fade
 ---
 
 # 八、团队协作与沟通
@@ -1000,6 +1011,7 @@ layout: default
 
 ---
 layout: default
+transition: slide-up
 ---
 
 # 九、个人成长与反思
@@ -1050,6 +1062,7 @@ layout: default
 
 ---
 layout: default
+transition: view-transition
 ---
 
 # 十、后续工作计划
@@ -1099,6 +1112,10 @@ layout: default
 
 
 ---
+layout: center
+class: text-center
+transition: fade-out
+---
 
 # 总结
 
@@ -1128,6 +1145,8 @@ layout: default
 
 ---
 layout: center
+class: text-center
+transition: slide-up
 ---
 
 # 谢谢！
