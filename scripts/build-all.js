@@ -87,8 +87,9 @@ if (projectName) {
 
   console.log(`Building ${targetFile}...\n`);
   const outputDir = resolve(process.cwd(), 'dist', projectName);
+  const base = `/${projectName}/`;
   try {
-    execSync(`slidev build ${mdFilesDir}/${targetFile} --out "${outputDir}"`, {
+    execSync(`slidev build ${mdFilesDir}/${targetFile} --base "${base}" --out "${outputDir}"`, {
       stdio: 'inherit'
     });
     console.log(`\n✓ Successfully built ${targetFile} to dist/${projectName}`);
@@ -115,9 +116,10 @@ if (projectName) {
   mdFiles.forEach((file, index) => {
     const fileName = basename(file, '.md');
     const outputDir = resolve(process.cwd(), 'dist', fileName);
+    const base = `/${fileName}/`;
     console.log(`\n[${index + 1}/${mdFiles.length}] Building ${file}...`);
     try {
-      execSync(`slidev build ${mdFilesDir}/${file} --out "${outputDir}"`, {
+      execSync(`slidev build ${mdFilesDir}/${file} --base "${base}" --out "${outputDir}"`, {
         stdio: 'inherit'
       });
       console.log(`✓ Successfully built ${file} to dist/${fileName}`);
