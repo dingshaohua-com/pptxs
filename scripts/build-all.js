@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { execSync } from 'child_process';
-import { readdirSync, existsSync, writeFileSync } from 'fs';
+import { readdirSync, existsSync, writeFileSync, mkdirSync } from 'fs';
 import { basename, join } from 'path';
 
 const mdFilesDir = 'contents';
@@ -14,6 +14,11 @@ const mdFiles = readdirSync(mdFilesDir)
 
 // 创建 dist/index.html
 function createIndexHtml(projects) {
+  // 确保 dist 目录存在
+  if (!existsSync('dist')) {
+    mkdirSync('dist', { recursive: true });
+  }
+
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
